@@ -1,0 +1,2 @@
+# Preserve bytes across platforms for source and aggregate-result checksums.
+* -text

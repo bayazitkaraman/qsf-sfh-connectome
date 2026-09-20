@@ -1,0 +1,11 @@
+{
+  "scope": "Aggregate results from the original completed consolidation; no participant-level records.",
+  "sha256": {
+    "candidate_summary.csv": "739ebff7c75766dfde0abc6cfff6a86c9897f4853f7175ef98a8ee503cd5e59d",
+    "paired_comparisons.csv": "c6115e9b42b19edc9c4545fa099662f5e9b72f5afe93c2c03bc365161d6698ed",
+    "projection_target_summary.csv": "152555c27a5e68e3d7ac1fe6dfe7cc38858544ba366f5a988ba573ceaa6c4e2e",
+    "selected_choices.csv": "4eabadd7a3e601c7ccc0f3a81a6d6c30c45b035460533951ca128f081181eb57",
+    "split_mask_summary.csv": "fe5a25363ed7688da3cca08f6d981f975789976f966f622506b01e2271f33120",
+    "track_summary.csv": "f8ed42a37e8220f48635c770acf4327b821a0223e2299b21c7ec6d0add9d66ed"
+  }
+}

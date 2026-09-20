@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "full_cohort_models_refitted": false,
+  "unchanged_numerical_functions_or_classes": 34,
+  "helper_modules_byte_identical": 14,
+  "portable_inputs": [
+    {
+      "cohort": "hcp83",
+      "input_hashes_verified": 1062,
+      "recomputed_response_graphs": 2
+    },
+    {
+      "cohort": "oasis",
+      "input_hashes_verified": 695,
+      "recomputed_response_graphs": 2
+    }
+  ],
+  "saved_predictions": [
+    {
+      "cohort": "hcp83",
+      "encoder": "qsf",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "hcp83",
+      "encoder": "qsf",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "hcp83",
+      "encoder": "heat_raw18",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "hcp83",
+      "encoder": "heat_raw18",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "hcp83",
+      "encoder": "heat_norm18",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "hcp83",
+      "encoder": "heat_norm18",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "qsf",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "qsf",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "heat_raw18",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "heat_raw18",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "heat_norm18",
+      "scaling": "tanh3",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cohort": "oasis",
+      "encoder": "heat_norm18",
+      "scaling": "group_floor",
+      "families": 4,
+      "max_absolute_difference": 0.0
+    }
+  ],
+  "all_2682_job_specifications_match": true,
+  "ordered_row_keys_preserve_bootstrap": true,
+  "unit_tests": 42,
+  "synthetic_end_to_end_cells": 9,
+  "scope": "Release packaging and numerical equivalence checks, not a new full-cohort run or external replication."
+}

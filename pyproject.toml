@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qsf-sfh-connectome"
+version = "1.0.0"
+description = "Source-conditioned connectome representations, bounded coordinate decoding, and reference selection."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{name = "Bayazit Karaman", email = "bkaraman@floridapoly.edu"}]
+dependencies = ["numpy>=2.3,<3", "pandas>=3,<4", "matplotlib>=3.11,<4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

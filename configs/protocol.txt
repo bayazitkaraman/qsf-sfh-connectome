@@ -1,0 +1,123 @@
+# Focused consolidation benchmark
+
+September 18, 2026. Exploratory development on previously examined cohorts.
+This protocol must be hashed before new fitting. Earlier frozen experiments,
+the public repository, and the manuscript are not overwritten.
+
+## Question and information
+
+How do source-conditioned graph responses encode anatomical position, how does
+placement affect that information, and how can decoding extrapolation be
+controlled? Atlas correspondence remains available. Shared response decoders
+omit explicit target-label predictors; label-specific atlas controls quantify
+the advantage of using that available anatomical prior.
+
+Reuse the 1062 HCP-83 and 695 OASIS participants, five overlapping holdouts,
+three protected masks, calibration separation, and saved source sequences from
+extensions_20260918. No exclusions, new datasets, new rankings, or family-disjoint
+claims. Report graph-label and actual finite-coordinate target counts separately.
+Calibration participants remain unused here; no new operational gate is fitted.
+
+## Features and graph conditions
+
+QSF: six times [.25,.5,1,2,4,8], real/imaginary/probability channels, plus six
+coordinate moments. Raw and row-normalized heat: 18 geomspace(.25,8) times,
+plus the corresponding six moments. All have 18*k+6 features. Moments and
+source-centered bounds use each encoder's mean nonnegative source response.
+Use the existing zero-diagonal log1p weights and exact component support.
+
+Individual graph is the main condition. The template graph is the arithmetic
+mean of transformed weights over source/decoder FIT participants only, followed
+by a fresh Laplacian and propagation calculation. It stays fixed during decoder
+refitting on fit+validation; neither validation, calibration, nor test graphs
+enter that template. Each person retains their own permitted source coordinates
+in both conditions. Fit the template decoder anew; do not swap graphs only at
+test time. Hold targets, source identities, splits, and fitting rules fixed.
+
+## Restricted decoder
+
+Primary preprocessing is mandatory existing tanh3 after training standardization.
+It cannot be deselected. Standardization and centering use fit only during
+validation and fit+validation during final refitting. Positive summed-loss ridge
+grid [.001,.01,.1,1,10,25,100,1000]. Select the largest alpha within one SE for
+each family/radius; then choose lowest validation mean nRMSE, ties larger radius.
+Retain ordinary and residual predictions as diagnostics, not robust defaults.
+
+Admissible robust families: projection-only and bounded residual. The existing
+source center, RMS radius, training-source fallbacks, and radii [1,2,4] are
+unchanged. Prefer projection if its validation mean nRMSE AND nMSE are each
+within 1% of bounded residual; otherwise take bounded residual if better in
+mean nRMSE, projection otherwise. This fixed per-cell selection rule, not one
+retrospectively chosen universal family, is the evaluated robust procedure.
+
+One targeted sensitivity only: on fixed random sources, replace tanh3 with
+linear group-floor scaling, sqrt(sigma_j^2 + (0.1*s_group)^2). Each response
+channel/time across sources is one group; coordinate means and spreads form
+two separate three-axis groups. s_group is RMS of column standard deviations.
+If zero, use pooled raw training RMS; if that is also zero, use 1 native feature
+unit. No epsilon search. Bounds remain mandatory. Report separately; do not
+select between this sensitivity and the primary pipeline using test outcomes.
+
+## Placement and comparisons
+
+Fit all seven existing source policies with all three feature-matched encoders
+and four diagnostic/admissible families. Representation comparison uses identical
+random source sequences. Primary placement menu excludes spatial: random,
+graph coverage, fixed SFH, spectral, QSF discrimination, heat discrimination.
+Spatial is evaluated separately, never silently pooled into the primary menu.
+No claim that these methods are anatomy-free; correspondence/hemispheres remain.
+
+For a policy selector, retain random unless another admissible policy improves
+validation mean nRMSE by at least 1% without worsening validation nMSE. Among
+qualifying policies within 1% of the best mean, use the declared order above.
+Apply the same rule to each encoder. Selection is budget-specific, not a single
+nested hierarchy. For decomposition record (a) ordinary/random, (b) robust/random,
+(c) ordinary with validation-selected nonspatial policy, (d) robust with selected
+nonspatial policy. Also evaluate an identical selected source set with ordinary
+decoding to isolate decoder versus placement effects for that set. These are
+descriptive decompositions, not additive causal effects.
+
+Template control is refitted at random sources and at the individual-graph
+robust procedure's validation-selected nonspatial source set. Template models
+retune alpha/radius/family with the same rule, but cannot choose different source
+identities. Thus this is a fixed-source graph-condition comparison, not a claim
+of the optimal template-specific placement. Each template family is also compared
+with the same individual family. Include mean and source-aligned atlas predictions
+on identical protected targets and these same source sets; atlas estimated from
+fit+validation coordinates, alignment uses only permitted test-source coordinates.
+
+## Projection and finite targets
+
+For every bounded fitted model save its own unprojected prediction and projected
+prediction. Report clipping frequency, inside/outside-ball frequency, normalized
+distance beyond the ball, and error change, by cohort/budget/family/fallback.
+Check inside-ball projection never increases error beyond floating tolerance;
+check error >= max(0, distance(truth,center)-radius) for every valid target.
+These are properties of an identical prediction's Euclidean projection, not
+comparisons between differently fitted families. No anatomical-validity guarantee.
+
+## Endpoints and stopping rule
+
+Equal-participant mean nRMSE and nMSE are primary: average repeated split/mask
+records within person first. Report row means, quantiles, maxima, per-split/mask
+results, finite target counts, and all failures. Five thousand paired participant
+bootstrap resamples; conditional on fitted splits, no family/multiplicity correction.
+Primary 32-source comparisons per cohort: robust QSF versus both matched heats
+at common random placement; selected versus random robust QSF; individual versus
+template robust QSF at fixed random sources. 8/16 sources are placement stress
+tests; remaining comparisons exploratory. Report all signs, not only favorable CIs.
+
+Stop after this frozen benchmark and sensitivity. Do not expand the architecture
+menu or choose a replacement because of its test score. The evidence may support
+a population-geometry result, not individual-connectivity benefit. No independent
+confirmation, operational reliability, universal superiority, or clinical claim.
+
+## Verification
+
+Before fitting: unit tests for features, grouping, source-only geometry, projection,
+selection, solver equivalence, and template construction. Freeze code, inputs,
+rankings, masks, partitions. Verify hashes on resume and reject partial/changed
+cells. Reconstruct metrics from predictions, check feature dimensions and bounded
+outputs, template fit IDs, source/target separation, and all selections. Saved
+unbounded comparisons and prior failures are preserved. No manuscript migration
+until the consolidated results and scope have been assessed.
