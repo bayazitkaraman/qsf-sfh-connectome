@@ -1,109 +1,159 @@
 {
+  "version": "1.1.0",
   "status": "PASS",
-  "full_cohort_models_refitted": false,
-  "unchanged_numerical_functions_or_classes": 34,
-  "helper_modules_byte_identical": 14,
-  "portable_inputs": [
-    {
-      "cohort": "hcp83",
-      "input_hashes_verified": 1062,
-      "recomputed_response_graphs": 2
-    },
-    {
-      "cohort": "oasis",
-      "input_hashes_verified": 695,
-      "recomputed_response_graphs": 2
-    }
-  ],
-  "saved_predictions": [
-    {
-      "cohort": "hcp83",
-      "encoder": "qsf",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "hcp83",
-      "encoder": "qsf",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "hcp83",
-      "encoder": "heat_raw18",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "hcp83",
-      "encoder": "heat_raw18",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "hcp83",
-      "encoder": "heat_norm18",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "hcp83",
-      "encoder": "heat_norm18",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "qsf",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "qsf",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "heat_raw18",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "heat_raw18",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "heat_norm18",
-      "scaling": "tanh3",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    },
-    {
-      "cohort": "oasis",
-      "encoder": "heat_norm18",
-      "scaling": "group_floor",
-      "families": 4,
-      "max_absolute_difference": 0.0
-    }
-  ],
-  "all_2682_job_specifications_match": true,
-  "ordered_row_keys_preserve_bootstrap": true,
-  "unit_tests": 42,
-  "synthetic_end_to_end_cells": 9,
-  "scope": "Release packaging and numerical equivalence checks, not a new full-cohort run or external replication."
+  "unit_tests": 57,
+  "scope": "Release equivalence on the existing prepared inputs, not an external scientific replication.",
+  "primary_full_cohort_refit": false,
+  "primary_release_validation": {
+    "status": "PASS",
+    "full_cohort_models_refitted": false,
+    "unchanged_numerical_functions_or_classes": 34,
+    "helper_modules_byte_identical": 14,
+    "portable_inputs": [
+      {
+        "cohort": "hcp83",
+        "input_hashes_verified": 1062,
+        "recomputed_response_graphs": 2
+      },
+      {
+        "cohort": "oasis",
+        "input_hashes_verified": 695,
+        "recomputed_response_graphs": 2
+      }
+    ],
+    "saved_predictions": [
+      {
+        "cohort": "hcp83",
+        "encoder": "qsf",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "hcp83",
+        "encoder": "qsf",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "hcp83",
+        "encoder": "heat_raw18",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "hcp83",
+        "encoder": "heat_raw18",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "hcp83",
+        "encoder": "heat_norm18",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "hcp83",
+        "encoder": "heat_norm18",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "qsf",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "qsf",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "heat_raw18",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "heat_raw18",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "heat_norm18",
+        "scaling": "tanh3",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      },
+      {
+        "cohort": "oasis",
+        "encoder": "heat_norm18",
+        "scaling": "group_floor",
+        "families": 4,
+        "max_absolute_difference": 0.0
+      }
+    ],
+    "all_2682_job_specifications_match": true,
+    "ordered_row_keys_preserve_bootstrap": true,
+    "unit_tests": 42,
+    "synthetic_end_to_end_cells": 9,
+    "scope": "Release packaging and numerical equivalence checks, not a new full-cohort run or external replication."
+  },
+  "additional_controls": {
+    "status": "PASS",
+    "full_control_refits": 1260,
+    "max_prediction_difference": 0.0,
+    "max_model_array_difference": 0.0,
+    "independent_checks": 30,
+    "max_independent_difference": 4.5361048250924796e-11,
+    "real_hidden_coordinate_checks": 12,
+    "all_hidden_coordinate_checks_passed": true,
+    "real_io_resume_checks": 6,
+    "recovered_cells": 2,
+    "aggregate_rows_reproduced": 84,
+    "paired_rows_reproduced": 96
+  },
+  "scientific_source_sha256": {
+    "src/brain_quantum/analysis_suite.py": "68a83b0f81a324d6059350a06962b3fb621f2f4550d13ef687af14720c45d05f",
+    "src/brain_quantum/decoder_robustness.py": "8d46fd3978818ae1ebce14de910a7bde6d30fbfdd2534b14149c00d0ff7a4653",
+    "src/brain_quantum/dense_heat_capacity_control.py": "55adb2e32d666479922b64523ee89ba2e7084f47c75be0bd58c778632933c79e",
+    "src/brain_quantum/graph_propagation.py": "49583e04a66998937e2e955937cfa7e4f25bd5847cbbb9249cc48294d209d2c8",
+    "src/brain_quantum/linear_decoder.py": "0bf8c25b36988a90e260be81117db85642499dd127f873e4065da7fd549e0475",
+    "src/brain_quantum/mechanism_suite.py": "9130053b1847c52cac8448ea82d7416b55e1aec6b24076198667e6c07352d143",
+    "src/brain_quantum/methodology_controls.py": "6af07a58c96daeb04aa8e6c108a418a1873ee07421edca956fd1ed9fbb6d2ef5",
+    "src/brain_quantum/null_controls.py": "ac710b8219b8748021b348c887ecdf1c0870728c34e63e1535cb5a53abcb6ff6",
+    "src/brain_quantum/qrc_connectome.py": "b6ed1350a84e99824df6b5cfbe04cf0658f7abfd5ead2310aeb1839055bc3146",
+    "src/brain_quantum/qrc_hierarchy_suite.py": "4b244570d9e4bf38e128a7400df9bbe1bd4ec198d9f8ffe9ead190b78f60b5f1",
+    "src/brain_quantum/selector_deep_dive.py": "f89cb46eaefde15a71d3f93792ce64371feafb7f4b966465e85a8bc0ae69a6c1",
+    "src/brain_quantum/source_coordinate_v2.py": "cfb34a2e95a18a77c9778c2aaab4355acc8f61e5c87f1a762a959ec2b769de0d",
+    "src/brain_quantum/source_discovery_suite.py": "1107ee7ff35f1b34bfe1adf5484501613b148d5082e516ecc8a673e9bd25af0a",
+    "src/brain_quantum/__init__.py": "95bbeac1c890163602ef11857d11f04e3cb315d8ea6ed729f8c48829977c56f2",
+    "src/qsf_sfh/benchmark.py": "f26dbf896915d76da60f835beed51f2cd6313fec6793c1ca20ac99f91eca25f4",
+    "src/qsf_sfh/controls.py": "415cff32f2f8549e5c30409292c4533dc57b89cac418bcda3f319243648f8a7f",
+    "src/qsf_sfh/control_solver.py": "860d9da0dd242afb802457e9d94644604d24104cd2ecd244d7d1f13505506a4c",
+    "src/qsf_sfh/control_summary.py": "0c9b8f17051ba98b01debc234db27b1be31001587e2795315970b6c42c035e82",
+    "src/qsf_sfh/core.py": "fc910c0d8ffdd5f38f2ecc9ba7ad90d38e20fe88fa00991207ddd50d169d96f4",
+    "src/qsf_sfh/data.py": "d0576d1a186bd623a5a7fbd7d2bfbb08d7e846ec66966359132d7191133821cb",
+    "src/qsf_sfh/model.py": "e9f30245c05a1a7d4bd5729aa5cb1388d94d5212ec8950a454e5fe1ffc5f66dc",
+    "src/qsf_sfh/projection_audit.py": "7401a0d99a73148b83ad768ddaf192300a9cdcffefaeb0b8d1300c44ed6efff0",
+    "src/qsf_sfh/rankings.py": "2d5a258702562c91dadf4e32b899cfbec46ccaf68a6282d263c9ad115b939a68",
+    "src/qsf_sfh/summarize.py": "35f2c6ff97c62510226e59b48f298ab76bb0544e5d6e67249cd9bffeef4ec466",
+    "src/qsf_sfh/verify_models.py": "14a64499e578ca4b6d0886e296c919a70a8ced85c779238db6d30601c985f03b",
+    "src/qsf_sfh/__init__.py": "489cd217904b7b92bc1bb6ee3ad6a10b8f1764a68b309fdb16c776e53cf5c731"
+  },
+  "version_metadata_note": "The package version changed from 1.0.0 to 1.1.0 after the parity run; numerical source bytes were unchanged."
 }

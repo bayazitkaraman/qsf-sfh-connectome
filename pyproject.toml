@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qsf-sfh-connectome"
-version = "1.0.0"
+version = "1.1.0"
 description = "Source-conditioned connectome representations, bounded coordinate decoding, and reference selection."
 readme = "README.md"
 requires-python = ">=3.12"

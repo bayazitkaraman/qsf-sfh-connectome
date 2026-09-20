@@ -1,11 +1,17 @@
 {
-  "scope": "Aggregate results from the original completed consolidation; no participant-level records.",
+  "scope": "Aggregate primary and post hoc control results and release verification; no participant-level records.",
   "sha256": {
     "candidate_summary.csv": "739ebff7c75766dfde0abc6cfff6a86c9897f4853f7175ef98a8ee503cd5e59d",
+    "controls_comparisons.csv": "9615182b97f9b5247b0b7acd25b5c9c630dd3e1b8600292dd07daeb77a02e0ba",
+    "controls_summary.csv": "f64ce0bafbcb2639f5950ca91db153c9cbc59555b0b7b8e3da134188f5bae5a8",
     "paired_comparisons.csv": "c6115e9b42b19edc9c4545fa099662f5e9b72f5afe93c2c03bc365161d6698ed",
     "projection_target_summary.csv": "152555c27a5e68e3d7ac1fe6dfe7cc38858544ba366f5a988ba573ceaa6c4e2e",
     "selected_choices.csv": "4eabadd7a3e601c7ccc0f3a81a6d6c30c45b035460533951ca128f081181eb57",
     "split_mask_summary.csv": "fe5a25363ed7688da3cca08f6d981f975789976f966f622506b01e2271f33120",
     "track_summary.csv": "f8ed42a37e8220f48635c770acf4327b821a0223e2299b21c7ec6d0add9d66ed"
+  },
+  "verification_sha256": {
+    "controls_verification.json": "d9c3aed2ff805b8ffcabd8cffba6b7e0a03f04665f82ce806207b5ee1d52338f",
+    "release_validation.json": "a71d47a3c10655018412f48a76aa5e891989cf4ca564c6fe23f11c37dcc87d69"
   }
 }

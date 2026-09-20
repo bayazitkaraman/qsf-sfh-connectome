@@ -29,7 +29,9 @@ def main():
         with (ROOT/'results'/name).open(newline='') as handle:
             headers = next(csv.reader(handle))
         assert not {'subject_id','participant_id','patient_id'}.intersection(headers), name
-    print('PASS: release hashes, 1757 input-hash entries, partition/mask separation, frozen source rankings, and aggregate outputs.')
+    for name, sha in expected.get('verification_sha256', {}).items():
+        assert digest(ROOT/'results'/name) == sha, name
+    print('PASS: release hashes, 1757 input-hash entries, partition/mask separation, frozen source rankings, aggregate outputs, and verification records.')
 
 
 if __name__ == '__main__':

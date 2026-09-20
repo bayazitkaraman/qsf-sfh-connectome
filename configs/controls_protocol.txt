@@ -1,0 +1,77 @@
+Additional source-field controls
+
+Scope
+This fixed post hoc extension uses the existing 1062 HCP-83 and 695 OASIS
+participants, all five participant splits, three protected masks, and the
+saved random source rankings at 8, 16, and 32 sources. No additional exclusions
+or source-policy optimization are performed. Both cohorts informed earlier
+development; these experiments are exploratory, not independent confirmation.
+There are 1260 fitted configurations: 2 cohorts x 5 splits x 3 masks x 3 budgets
+x (9 known-label representations + 5 unseen-label representations).
+
+Known-label representations
+Full QSF uses six times [0.25, 0.5, 1, 2, 4, 8], with interleaved real,
+imaginary, and probability channels (18k dynamic features). Raw and full-row
+normalized heat use 18 geomspace(0.25, 8) times. Additional QSF dynamic blocks
+are probability at six times (6k), real/imaginary at six times (12k), probability
+at 18 geomspace times (18k), real/imaginary at nine geomspace times (18k), and
+no dynamic block (moments only). All QSF ablations retain the original six-time
+mean probability response for coordinate moments and bound centers. These are
+dynamic-channel ablations, not removal of probability from the whole pipeline.
+All representations add six source-coordinate moments, except the moments-only
+control whose total dimension is six. Equal dimension does not equate capacity
+or information content. Probability responses may retain interference effects.
+
+Shortest path
+Use the original all_pairs_shortest_path helper on zero-diagonal log1p weights,
+with present-edge lengths 1/(W+1e-9). Fill unreachable distances with 1.25 times
+the maximum finite distance within the subject. A fully edgeless graph would
+have zero filled distances; count rather than silently exclude such cases.
+Scale the selected source columns by their median across all vertices and
+sources, floored at 1e-6. Concatenate scaled distances and exp(-scaled distance)
+(2k dynamic features). Use the exponential response for six coordinate moments
+and source-frame centers. This baseline contains no QSF features. Its finite
+surrogates for disconnected pairs are conventional features, not physical
+propagation across components.
+
+Unseen-label supervision
+Withhold each protected mask's coordinates in every participant before building
+learning inputs. Sources are outside this mask. Train and validate on every
+remaining label except sources; nonfinite target coordinates contribute no row.
+Full graphs and atlas correspondence remain available. Test on the original
+held-out participants and protected labels. The five representations are full
+QSF, raw heat, normalized heat, shortest path, and fitting-only template QSF.
+No coordinate atlas or hidden-label coordinate prior is admissible. Templates
+average fitting-participant weights only, with each person's own source geometry.
+Validation extent uses only permitted coordinates, floored at one. Full-subject
+extent is attached after predictions are fixed for test scoring only. This is
+unseen coordinate supervision at known vertices, not a new atlas or new vertices.
+Differences from known-label results also reflect changed supervision and
+validation normalization; they are not pure estimates of memorization.
+
+Decoder and numerical recovery
+Reuse the primary tanh3 preprocessing, positive summed-loss ridge grid,
+one-standard-error rule, radii [1,2,4], source-only fallbacks, and validation
+choice between projection-only and bounded residual. Refit on fitting plus
+validation participants. Calibration remains unused. No test-based choices.
+If direct SVD does not converge, retry the same full selection routine with QR
+and augmented least squares: solve [R; sqrt(alpha) I] B = [Q'Y_centered; 0].
+No features, penalties, or observations are removed. Log the recovery and
+compare the selected refit to direct augmented least squares on the full design.
+The original primary benchmark retains its original default solver.
+
+Reporting and checks
+Save all grids, selections, coefficients, predictions, and participant metrics
+under the local work directory; ship only aggregate outputs. Average repeated
+records within each participant before group means. Pair on split, mask, and
+participant, using 5000 paired participant-bootstrap resamples. The seed is the
+first eight SHA-256 hexadecimal digits of the contrast's stable name. Intervals
+are conditional, not family-aware or multiplicity-corrected. Overlapping
+known-label heat contrasts retain the original main-paper intervals; the
+additional-control export uses its own fixed resampling seeds and can differ
+slightly at interval endpoints despite identical predictions.
+Verify source/target separation, all selections, and all prediction-derived
+metrics. At split 1/mask 1/32 sources for every representation and cohort,
+check the solver independently and poison hidden coordinates for unseen-label
+models. Repeat both checks for any recovered unseen-label fit. Refuse incomplete
+reporting. Native-coordinate RMSE is not certified as millimetres.

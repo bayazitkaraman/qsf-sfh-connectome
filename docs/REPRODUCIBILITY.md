@@ -1,9 +1,12 @@
-# Reproducing the Consolidation
+# Reproducing the Analysis
 
 The numerical protocol was frozen on September 18, 2026. Its original byte-exact
 text is `configs/protocol.txt`; the recorded SHA-256 is
 `f7c88cd027a005e7dd2d9372adee9ebc596df02912523398dc25e0f4b8829bc6`.
 The protocol describes the completed experiment, not an untouched preregistration.
+The additional representation and unseen-region controls are specified separately
+in `configs/controls_protocol.txt`. Both cohorts had informed development; these
+controls do not create an independent confirmation sample.
 
 ## Code and Inputs
 
@@ -21,7 +24,7 @@ the configuration. These local keys are not anonymization guarantees for local
 prediction files; treat all record-level outputs as restricted working data.
 
 The release manifest checks source/configuration bytes. The results manifest
-checks shipped aggregate CSV bytes. Git line-ending conversion is disabled so
+checks shipped aggregate CSV and verification JSON bytes. Git line-ending conversion is disabled so
 these checks behave consistently across operating systems. Editing tracked
 scientific code intentionally invalidates the release check; changes require
 a new versioned manifest, not silently bypassing the check.
@@ -51,10 +54,38 @@ evaluation using five overlapping holdouts, not family-disjoint HCP folds.
 
 ## Resources and Resume
 
+After preparing both cohorts with the primary runner, execute the additional
+controls with:
+
+```sh
+python scripts/run_controls.py --stage check
+python scripts/run_controls.py --stage prepare
+python scripts/run_controls.py --stage fit --workers 2
+python scripts/run_controls.py --stage summarize
+```
+
+The 1,260 cells reuse the original partitions, protected masks, and fixed random
+sources. Fresh aggregate summaries are written below the local work directory,
+not over the published files in `results/`. The unseen-region control withholds
+protected-region coordinates in every fitting and validation participant. Graphs
+and atlas identities remain available. Probability and amplitude ablations retain
+the original QSF probability-weighted geometry; they are not complete removals
+of probability information.
+
+Two OASIS unseen-region template fits required an equivalent numerical route
+after an SVD convergence failure. The control runner catches that specific
+failure and repeats the fit using QR reduction and augmented least squares for
+the same positive-ridge objective. The penalty grid, preprocessing, and selection
+criterion are unchanged. Recovery is recorded, and independent solver and
+hidden-coordinate checks are required for recovered cells. No participant or
+result is removed because of this numerical failure.
+
 Response tensors alone occupy roughly 2.6 GB (2.4 GiB) in 32-bit floating point, in addition
 to graph data, templates, fitted models, and record-level predictions. Allow ample
 disk space and begin with one or two worker processes; each fit also allocates
 design matrices. Full fitting is substantially more expensive than the tests.
+The additional-control preparation also stores feature-matched amplitude and
+probability responses and shortest-path arrays, increasing disk and memory use.
 
 Set `QSF_WORKDIR` before invoking the scripts to choose a local output directory.
 Completed data preparations and cells are reused only after their artifact hashes
@@ -70,10 +101,16 @@ not a claim that release preparation repeated all fitting. The repository tests
 exercise features, source-only information access, bounds, solver agreement,
 selection rules, and portable input/output behavior.
 
-Packaging checks compare the released functions and saved design against the
-original implementation and outputs. They do not establish independent scientific
-replication. The exact tests performed for this release are reported in
-`results/release_validation.json`; no new full-cohort refit is claimed there.
+For version 1.1.0, all 1,260 additional-control cells were refitted using the
+portable code and matched the saved model arrays and predictions exactly in the
+recorded environment. Verification also reproduced all 84 aggregate rows and
+96 paired contrasts, checked 30 real fits against an independent solver, tested
+12 real hidden-coordinate perturbations, and exercised six real save/resume
+paths. These checks establish release equivalence, not independent scientific
+replication. They do not imply a new refit of all 2,682 primary-analysis cells.
+The 57 portable tests passed. Detailed validation scope is recorded in
+`results/release_validation.json`; `results/controls_verification.json` reports
+the completed control-study audit.
 
 `results/` includes only approved aggregate summaries. Fresh record-level arrays,
 input-index mappings, source graphs, and local paths must not be committed.

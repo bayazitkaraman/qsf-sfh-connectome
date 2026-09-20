@@ -12,7 +12,8 @@ not quantum-computing or biological quantum-process claims.
 
 ## Current Analysis
 
-Version 1.0.0 packages the September 18, 2026 consolidation: 1062 HCP-derived
+Version 1.1.0 retains the primary consolidation and adds the fixed channel,
+shortest-path, and unseen-region controls. The analysis uses 1062 HCP-derived
 83-node connectomes and 695 OASIS-3-derived 124-node connectomes, evaluated
 separately with five overlapping participant holdouts, three protected target
 masks, and budgets of 8, 16, and 32 source labels. All models receive the complete
@@ -31,10 +32,38 @@ At 32 common random sources, equal-participant mean normalized RMSE was:
 
 Nonspatial reference selection reduced individual-graph QSF means to 0.10007 and
 0.04622 on the same targets. QSF improved on the two tested heat representations,
-but template graphs and the aligned atlas were more accurate. These exploratory
-results do not demonstrate a predictive benefit from participant-specific
-connectivity. Both cohorts had already informed development; the holdouts are
-not an untouched external replication.
+but template graphs and the aligned atlas were more accurate on this task,
+where protected regions also supply training coordinates in other participants.
+Both cohorts had already informed development; the holdouts are not an untouched
+external replication.
+
+The additional controls use the same participants, splits, target masks, and
+random sources, without new exclusions or policy selection. Full QSF outperformed
+the tested shortest-path representation and all channel ablations on the original
+task, including equal-dimension amplitude and probability variants. At 32 sources:
+
+| Additional representation | HCP-83 | OASIS |
+| --- | ---: | ---: |
+| Amplitudes, 18 dynamic channels | 0.10795 | 0.05539 |
+| Probability, 18 dynamic channels | 0.11407 | 0.06006 |
+| Shortest path | 0.14696 | 0.08569 |
+
+When protected-region coordinates were removed from every fitting and validation
+participant, mean errors were higher. The complete graph and correspondence
+remained available, so this is unseen coordinate supervision at known vertices:
+
+| Unseen-region representation, 32 sources | HCP-83 | OASIS |
+| --- | ---: | ---: |
+| Individual QSF | 0.18822 | 0.12110 |
+| Raw heat | 0.19541 | 0.12782 |
+| Normalized heat | 0.20165 | 0.13469 |
+| Shortest path | 0.19932 | 0.13413 |
+| Template QSF | 0.18266 | 0.14362 |
+
+QSF's advantage over heat and shortest path persisted, but the template ordering
+became cohort- and budget-dependent. Individual connectivity is not uniformly
+helpful or unhelpful. These post hoc controls do not establish atlas-free
+inference, an independent replication, or a uniquely quantum mechanism.
 
 ## Repository Layout
 
@@ -50,8 +79,10 @@ tests/       Synthetic and numerical regression tests
 There are no manuscript files, raw connectomes, participant-level prediction
 records, private review notes, IRB documents, or model caches in the current tree.
 This repository starts with the consolidated implementation. Internal helper
-names are preserved where they identify code used in the audited analysis; the current entry point
-is `scripts/run_analysis.py`, not the older helper modules' command-line programs.
+names are preserved where they identify code used in the audited analysis.
+Use `scripts/run_analysis.py` for the primary benchmark and
+`scripts/run_controls.py` for the additional controls, not the older helper
+modules' command-line programs.
 
 ## Setup
 
@@ -99,10 +130,27 @@ substantial and is not a quick installation test. `--stage all` executes the
 full sequence. See [reproduction details](docs/REPRODUCIBILITY.md) for resource
 requirements, resume behavior, validation scope, and optional ranking checks.
 
+After the shared `--stage prepare` has finished, run the additional controls
+independently of the primary model fits:
+
+```sh
+python scripts/run_controls.py --stage check
+python scripts/run_controls.py --stage prepare
+python scripts/run_controls.py --stage fit --workers 2
+python scripts/run_controls.py --stage summarize
+```
+
+Their fixed specification is `configs/controls_protocol.txt`. Every one of the
+1260 configurations must complete before reporting. Numerical SVD nonconvergence
+is retried using the same positive-ridge objective through QR and augmented
+least squares, with an independent check; no participant or feature is dropped.
+
 New participant-level outputs stay under ignored `work/` directories, or an
 external directory set by `QSF_WORKDIR`. They never overwrite the shipped
 aggregate results. The existing `results/*.csv` are the audited study outputs,
-not numbers recomputed by a fresh full-cohort run of this release package.
+not outputs silently replaced by a fresh run. Release verification separately
+compares the portable implementation with the archived study outputs; its exact
+scope is recorded in `results/release_validation.json`.
 
 To plot the shipped aggregates without downloading data, use
 `python scripts/plot_results.py --input results`. This produces ten panels;

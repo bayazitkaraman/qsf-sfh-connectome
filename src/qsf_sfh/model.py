@@ -137,9 +137,10 @@ def policy_choice(rows):
                key=lambda r: POLICIES.index(r['policy']))
 
 
-def fit(inner, final, fit_ids, val, train, count, scaling):
+def fit(inner, final, fit_ids, val, train, count, scaling, *, path_factory=None):
+    solver = path if path_factory is None else path_factory
     x, y = inner.fit_arrays(fit_ids)
-    p = path(x, y, scaling, count)
+    p = solver(x, y, scaling, count)
     xv = inner.x[val]
     grid = []
     for alpha in POSITIVE:
@@ -154,7 +155,7 @@ def fit(inner, final, fit_ids, val, train, count, scaling):
                                  alpha_over_inner_N=alpha/len(x)))
     chosen = choose_families(grid)
     xo, yo = final.fit_arrays(train)
-    final_path = path(xo, yo, scaling, count)
+    final_path = solver(xo, yo, scaling, count)
     models = {family: final_path.model(row['alpha']) for family, row in chosen.items()}
     diagnostics = dict(feature_count=xo.shape[1], fit_rows=len(x), refit_rows=len(xo),
                        smallest_singular=float(final_path.singular[-1]),
