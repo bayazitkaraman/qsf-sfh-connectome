@@ -1,174 +1,63 @@
-# QSF and SFH Connectome Analysis
+# Decoding regional coordinates from structural connectomes
 
-Code and aggregate results for **Anatomical Information in Source-Conditioned
-Connectome Responses: Bounded Coordinate Decoding and Reference Placement**.
+Given a brain connectivity graph and the locations of a few reference regions, how well can a model predict the positions of other regions? Measured centroids provide a known answer. The purpose is to compare the anatomical information available to a decoder from different graph representations, not to replace a centroid that can already be measured from an atlas.
 
-Quantum-Walk-Inspired Source Fields (QSF) describe each brain region through
-multiscale responses to known reference regions. A shared decoder predicts
-protected target coordinates. Source-Field Hierarchy (SFH) is one of the fixed
-reference-selection policies evaluated alongside random, coverage, spectral,
-and response-discrimination policies. These are classical numerical methods,
-not quantum-computing or biological quantum-process claims.
+**Quantum-Walk-Inspired Source Fields (QSF)** describe a region by its real, imaginary, and probability responses to each reference across graph time scales. A bounded ridge decoder maps those responses and source-coordinate features to a three-dimensional position. **Source-Field Hierarchy (SFH)** is one reference-selection policy, not a second decoder. Both are classical numerical methods.
 
-## Current Analysis
+## Explore the results
 
-Version 1.2.0 adds local centroid spacing, selected bounds, a matched HCP-129
-parcellation analysis, and OASIS clinical visit summaries. Aggregate results
-are in `results/anatomy/`; [analysis instructions](docs/ANATOMY.md) cover
-inputs, commands, and validation scope. The original version 1.1.0 retains
-the primary consolidation and the fixed channel,
-shortest-path, and unseen-region controls. The analysis uses 1062 HCP-derived
-83-node connectomes and 695 OASIS-3-derived 124-node connectomes, evaluated
-separately with five overlapping participant holdouts, three protected target
-masks, and budgets of 8, 16, and 32 source labels. All models receive the complete
-weighted graph, atlas correspondence, source identities, and available source
-coordinates; protected test-target coordinates are withheld from prediction.
+The study evaluates 1,062 HCP participants (83 regions) and 695 OASIS-3 participants (124 regions) separately. Each model receives the complete weighted graph, regional correspondence, and the available coordinates of 8, 16, or 32 reference regions. The coordinates of the targets being predicted are withheld.
 
-At 32 common random sources, equal-participant mean normalized RMSE was:
+At **32 common random references**, the mean normalized root-mean-square error (nRMSE; lower is better) on the known-region task was:
 
-| Representation | HCP-83 | OASIS |
+| Representation | HCP-83 | OASIS-3 |
 | --- | ---: | ---: |
-| Individual-graph QSF | 0.10455 | 0.04983 |
-| Raw heat, matched feature count | 0.11906 | 0.07108 |
-| Normalized heat, matched feature count | 0.12022 | 0.07351 |
-| Fitting-only template QSF | 0.02976 | 0.02883 |
+| QSF on the participant's graph | 0.10455 | 0.04983 |
+| Raw heat on the participant's graph | 0.11906 | 0.07108 |
+| Normalized heat on the participant's graph | 0.12022 | 0.07351 |
+| QSF on a training-only template graph | 0.02976 | 0.02883 |
 | Source-aligned atlas | 0.02289 | 0.02297 |
 
-Nonspatial reference selection reduced individual-graph QSF means to 0.10007 and
-0.04622 on the same targets. QSF improved on the two tested heat representations,
-but template graphs and the aligned atlas were more accurate on this task,
-where protected regions also supply training coordinates in other participants.
-Both cohorts had already informed development; the holdouts are not an untouched
-external replication.
+Each held-out participant has equal weight. On this task, the same target labels can supply training coordinates in other participants. QSF gave lower error than both heat encodings, but the aligned atlas was more accurate than any graph representation shown above. When those labels supplied **no training or validation coordinates**, QSF still beat both heat encodings at 32 sources, with higher errors of 0.18822 (HCP-83) and 0.12110 (OASIS-3). The labels and graphs remain known in this test.
 
-The additional controls use the same participants, splits, target masks, and
-random sources, without new exclusions or policy selection. Full QSF outperformed
-the tested shortest-path representation and all channel ablations on the original
-task, including equal-dimension amplitude and probability variants. At 32 sources:
+| Question | Open the aggregate results |
+| --- | --- |
+| How do QSF, heat, a template graph, and an aligned atlas compare? | [Errors by budget and reference policy](results/track_summary.csv) |
+| What happens without a response channel, with shortest paths, or without target-label coordinate supervision? | [Representation controls](results/controls_summary.csv) |
+| How often does a prediction fall within the distance to the target's nearest other centroid? Does choosing the references help? | [Anatomical spacing](results/anatomy/practical.csv) and [paired differences](results/anatomy/practical_paired.csv) |
+| How restrictive are the decoder's bounds? | [Radii and fraction of targets outside](results/anatomy/bounds.csv) |
+| Does the QSF advantage persist in the same HCP participants at 129 regions? | [Parcellation comparison](results/anatomy/hcp129.csv) |
+| Which OASIS participants have a nearby clinical visit, and how does error vary by group? | [Matching coverage](results/anatomy/coverage.csv) and [descriptive contrasts](results/anatomy/contrasts_32.csv) |
 
-| Additional representation | HCP-83 | OASIS |
-| --- | ---: | ---: |
-| Amplitudes, 18 dynamic channels | 0.10795 | 0.05539 |
-| Probability, 18 dynamic channels | 0.11407 | 0.06006 |
-| Shortest path | 0.14696 | 0.08569 |
+The cohorts informed method development. The 129-region analysis tests a different scale in the same HCP participants, not an independent population. The clinical comparisons describe subsets with a matched visit; clinical labels do not enter model fitting.
 
-When protected-region coordinates were removed from every fitting and validation
-participant, mean errors were higher. The complete graph and correspondence
-remained available, so this is unseen coordinate supervision at known vertices:
+## Try it without participant data
 
-| Unseen-region representation, 32 sources | HCP-83 | OASIS |
-| --- | ---: | ---: |
-| Individual QSF | 0.18822 | 0.12110 |
-| Raw heat | 0.19541 | 0.12782 |
-| Normalized heat | 0.20165 | 0.13469 |
-| Shortest path | 0.19932 | 0.13413 |
-| Template QSF | 0.18266 | 0.14362 |
-
-QSF's advantage over heat and shortest path persisted, but the template ordering
-became cohort- and budget-dependent. Individual connectivity is not uniformly
-helpful or unhelpful. These post hoc controls do not establish atlas-free
-inference, an independent replication, or a uniquely quantum mechanism.
-
-## Repository Layout
-
-```text
-configs/     Hash-identified inputs, fixed partitions, source rankings, protocol
-docs/        Data access and reproduction details
-results/     Current aggregate CSV results and their checksums
-scripts/     Analysis, source-ranking, plotting, and verification entry points
-src/         Consolidated model and reused numerical helpers
-tests/       Synthetic and numerical regression tests
-```
-
-There are no manuscript files, raw connectomes, participant-level prediction
-records, private review notes, IRB documents, or model caches in the current tree.
-This repository starts with the consolidated implementation. Internal helper
-names are preserved where they identify code used in the audited analysis.
-Use `scripts/run_analysis.py` for the primary benchmark and
-`scripts/run_controls.py` for the additional controls, not the older helper
-modules' command-line programs.
-
-## Setup
-
-The reported environment used Python 3.12.14. From a cloned checkout:
+Clone the repository and enter it:
 
 ```sh
+git clone https://github.com/bayazitkaraman/qsf-sfh-connectome.git
+cd qsf-sfh-connectome
 python -m venv .venv
 ```
 
-Activate with `.venv\Scripts\Activate.ps1` on Windows PowerShell or
-`source .venv/bin/activate` on Linux/macOS, then:
+Use Python 3.12 (the study used 3.12.14). Activate with `.\.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` on Linux/macOS. From the repository root:
 
 ```sh
 python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 python scripts/check_release.py
-python -m unittest discover -s tests -v
+python scripts/plot_results.py --input results
 ```
 
-The checks and tests do not require the datasets. Run from the repository root;
-the release uses its adjacent `configs/` and `results/` directories and is
-intended for a checkout with an editable installation, not a standalone wheel.
+The first script verifies the distributed files; the second writes ten figure panels as PNG and PDF to `work/figures/` by default. Neither command downloads data or fits a model. To run the numerical and input-handling tests, use `python -m unittest discover -s tests -v`.
 
-## Data and Reproduction
+## Reproduce the fits
 
-Obtain the original BrainGraph HCP and OASIS derivatives under their source-data
-terms. See [data access](docs/DATA.md) for the exact input matching and eligibility
-conventions. Put extracted GraphML files under `data/hcp83/` and `data/oasis/`,
-or set `QSF_HCP83_DATA` and `QSF_OASIS_DATA` to their existing locations.
+1. **[Obtain the inputs](docs/DATA.md).** Match the BrainGraph derivatives by file hash. Access to OASIS clinical visits is only needed for the clinical comparison.
+2. **[Run the primary benchmark and representation controls](docs/REPRODUCIBILITY.md).** This guide covers preparation, fitting, scoring, resource requirements, and verification.
+3. **[Run the anatomical and clinical analyses](docs/ANATOMY.md).** Choose a workflow for anatomical spacing, decoder bounds, the 129-region HCP parcellation, or clinical visit matching.
 
-```sh
-python scripts/run_analysis.py --stage inputs
-python scripts/run_analysis.py --stage prepare
-python scripts/run_analysis.py --stage main --workers 2
-python scripts/run_analysis.py --stage template --workers 2
-python scripts/run_analysis.py --stage sensitivity --workers 2
-python scripts/run_analysis.py --stage summarize
-python scripts/run_analysis.py --stage audit
-python scripts/plot_results.py
-```
+The [study snapshot (v1.2.0)](https://github.com/bayazitkaraman/qsf-sfh-connectome/tree/v1.2.0) identifies the exact code and aggregate results cited in *Anatomical Information in Source-Conditioned Connectome Responses: Bounded Coordinate Decoding and Reference Placement*. Raw graphs, clinical visit records, and participant-level predictions are not distributed.
 
-Preparation regenerates responses from verified GraphML files; it does not
-require the author's private pickle caches. Full fitting is computationally
-substantial and is not a quick installation test. `--stage all` executes the
-full sequence. See [reproduction details](docs/REPRODUCIBILITY.md) for resource
-requirements, resume behavior, validation scope, and optional ranking checks.
-
-After the shared `--stage prepare` has finished, run the additional controls
-independently of the primary model fits:
-
-```sh
-python scripts/run_controls.py --stage check
-python scripts/run_controls.py --stage prepare
-python scripts/run_controls.py --stage fit --workers 2
-python scripts/run_controls.py --stage summarize
-```
-
-Their fixed specification is `configs/controls_protocol.txt`. Every one of the
-1260 configurations must complete before reporting. Numerical SVD nonconvergence
-is retried using the same positive-ridge objective through QR and augmented
-least squares, with an independent check; no participant or feature is dropped.
-
-New participant-level outputs stay under ignored `work/` directories, or an
-external directory set by `QSF_WORKDIR`. They never overwrite the shipped
-aggregate results. The existing `results/*.csv` are the audited study outputs,
-not outputs silently replaced by a fresh run. Release verification separately
-compares the portable implementation with the archived study outputs; its exact
-scope is recorded in `results/release_validation.json`.
-
-To plot the shipped aggregates without downloading data, use
-`python scripts/plot_results.py --input results`. This produces ten panels;
-the two record-level error distributions require outputs from a completed run.
-
-## Interpretation and License
-
-The method evaluates coordinate information in source-conditioned graph
-representations. It is not an atlas-free localizer, clinical prediction system,
-or claim that selected references are physiological hubs. Output bounds limit
-extrapolation but can worsen error for targets outside their permitted region.
-
-Software is covered by the MIT terms in [LICENSE](LICENSE). Original HCP,
-OASIS, and BrainGraph data retain their own access and use conditions.
-
-Author: Bayazit Karaman, Department of Computer Science, Florida Polytechnic
-University. Contact: bkaraman@floridapoly.edu.
+**Author:** Bayazit Karaman, Department of Computer Science, Florida Polytechnic University. **Contact:** bkaraman@floridapoly.edu. The [MIT license](LICENSE) covers the software; the source datasets retain their own access and use conditions.

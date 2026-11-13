@@ -8,6 +8,14 @@ does not redistribute GraphML data or grant permission beyond those terms.
 - HCP: `repeated_10_scale_33.7z`, the nominal 86-node release with 83 actual graph labels, Lausanne scale33, one million streamlines with ten repeated reconstructions.
 - OASIS-3: `oasis3_graphmls_scale1.7z`, Lausanne2018 scale1, 124 labels, Connectome Mapper 3.1 probabilistic tractography.
 
+Only two comparisons require additional inputs. The HCP parcellation check
+uses Lausanne2008 scale60 (129 labels) for the same participants, identified
+by [its ordered graph hashes](../configs/hcp129_inputs.json). OASIS clinical
+matching requires authorized access to longitudinal visit records as well as
+the original GraphML filenames. Neither input is needed to fit the primary
+models or plot the published results. See the [analysis-specific input
+instructions](ANATOMY.md).
+
 The HCP analysis retains 1062 records after two release-provenance exclusions:
 one withdrawn diffusion dataset and one derivative for which a withdrawn run
 could not be ruled out as an input. The OASIS analysis uses the first available
