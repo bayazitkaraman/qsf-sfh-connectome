@@ -1,0 +1,32 @@
+{
+  "source_sha256": "e328abc3255071e4e1efea0d3e4ca6763961d5d497e4614733882670ac6881b2",
+  "endpoint_reconstruction_max_abs": 1.1102230246251565e-16,
+  "replayed_summaries": [
+    "coverage",
+    "groups",
+    "errors",
+    "contrasts_32"
+  ],
+  "diagnosis_code_present_sensitivity": [
+    {
+      "window": 180,
+      "matched": 601,
+      "held_out": 391,
+      "ad_held": 50,
+      "normal_held": 294,
+      "estimate": 0.0066295309121528895,
+      "lo95": 0.002234457788096189,
+      "hi95": 0.012289082080635087
+    },
+    {
+      "window": 90,
+      "matched": 359,
+      "held_out": 245,
+      "ad_held": 26,
+      "normal_held": 192,
+      "estimate": 0.0024083835345989,
+      "lo95": -0.0006580282384777397,
+      "hi95": 0.005782233834630284
+    }
+  ]
+}

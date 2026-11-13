@@ -1,0 +1,217 @@
+window,stratification,group,held_out,sources,model,mean_nrmse
+180,cdr,0,296,8,random_heat_norm18,0.113788693
+180,cdr,0,296,8,random_heat_raw18,0.1081816152
+180,cdr,0,296,8,random_qsf,0.09009460338
+180,cdr,0,296,8,selected_qsf,0.08084368784
+180,cdr,0,296,16,random_heat_norm18,0.08762236556
+180,cdr,0,296,16,random_heat_raw18,0.08436609226
+180,cdr,0,296,16,random_qsf,0.06481966615
+180,cdr,0,296,16,selected_qsf,0.05974386501
+180,cdr,0,296,32,random_heat_norm18,0.07255557197
+180,cdr,0,296,32,random_heat_raw18,0.07012683693
+180,cdr,0,296,32,random_qsf,0.04881486319
+180,cdr,0,296,32,selected_qsf,0.04517385819
+180,cdr,0.5,82,8,random_heat_norm18,0.1154284775
+180,cdr,0.5,82,8,random_heat_raw18,0.1100554274
+180,cdr,0.5,82,8,random_qsf,0.09316990608
+180,cdr,0.5,82,8,selected_qsf,0.08388054113
+180,cdr,0.5,82,16,random_heat_norm18,0.08906696128
+180,cdr,0.5,82,16,random_heat_raw18,0.08643405013
+180,cdr,0.5,82,16,random_qsf,0.06727566632
+180,cdr,0.5,82,16,selected_qsf,0.06149883499
+180,cdr,0.5,82,32,random_heat_norm18,0.07397883511
+180,cdr,0.5,82,32,random_heat_raw18,0.07222462062
+180,cdr,0.5,82,32,random_qsf,0.05115671307
+180,cdr,0.5,82,32,selected_qsf,0.04760254633
+180,cdr,>=1,25,8,random_heat_norm18,0.1252923404
+180,cdr,>=1,25,8,random_heat_raw18,0.1187850813
+180,cdr,>=1,25,8,random_qsf,0.100817493
+180,cdr,>=1,25,8,selected_qsf,0.09537136053
+180,cdr,>=1,25,16,random_heat_norm18,0.1011485662
+180,cdr,>=1,25,16,random_heat_raw18,0.09501472594
+180,cdr,>=1,25,16,random_qsf,0.07718900955
+180,cdr,>=1,25,16,selected_qsf,0.07037613135
+180,cdr,>=1,25,32,random_heat_norm18,0.08675165112
+180,cdr,>=1,25,32,random_heat_raw18,0.08134654156
+180,cdr,>=1,25,32,random_qsf,0.0597446405
+180,cdr,>=1,25,32,selected_qsf,0.05490248877
+180,cdr,Unmatched,58,8,random_heat_norm18,0.1141398
+180,cdr,Unmatched,58,8,random_heat_raw18,0.1082612066
+180,cdr,Unmatched,58,8,random_qsf,0.09038599837
+180,cdr,Unmatched,58,8,selected_qsf,0.08170911802
+180,cdr,Unmatched,58,16,random_heat_norm18,0.08730136678
+180,cdr,Unmatched,58,16,random_heat_raw18,0.08439042752
+180,cdr,Unmatched,58,16,random_qsf,0.06489411036
+180,cdr,Unmatched,58,16,selected_qsf,0.06043039642
+180,cdr,Unmatched,58,32,random_heat_norm18,0.07202570359
+180,cdr,Unmatched,58,32,random_heat_raw18,0.06988065396
+180,cdr,Unmatched,58,32,random_qsf,0.04885304035
+180,cdr,Unmatched,58,32,selected_qsf,0.04584386794
+180,dx,AD Dementia,50,8,random_heat_norm18,0.1199909612
+180,dx,AD Dementia,50,8,random_heat_raw18,0.1145350926
+180,dx,AD Dementia,50,8,random_qsf,0.09809046534
+180,dx,AD Dementia,50,8,selected_qsf,0.08967943678
+180,dx,AD Dementia,50,16,random_heat_norm18,0.09531803971
+180,dx,AD Dementia,50,16,random_heat_raw18,0.09065850801
+180,dx,AD Dementia,50,16,random_qsf,0.0726860159
+180,dx,AD Dementia,50,16,selected_qsf,0.06567119531
+180,dx,AD Dementia,50,32,random_heat_norm18,0.08038272878
+180,dx,AD Dementia,50,32,random_heat_raw18,0.07706446452
+180,dx,AD Dementia,50,32,random_qsf,0.0554712701
+180,dx,AD Dementia,50,32,selected_qsf,0.05112998197
+180,dx,Cognitively normal,294,8,random_heat_norm18,0.1138070722
+180,dx,Cognitively normal,294,8,random_heat_raw18,0.1082019986
+180,dx,Cognitively normal,294,8,random_qsf,0.0900930014
+180,dx,Cognitively normal,294,8,selected_qsf,0.08086392544
+180,dx,Cognitively normal,294,16,random_heat_norm18,0.08765795216
+180,dx,Cognitively normal,294,16,random_heat_raw18,0.08439102587
+180,dx,Cognitively normal,294,16,random_qsf,0.0648468392
+180,dx,Cognitively normal,294,16,selected_qsf,0.05974149785
+180,dx,Cognitively normal,294,32,random_heat_norm18,0.07258124667
+180,dx,Cognitively normal,294,32,random_heat_raw18,0.07015054896
+180,dx,Cognitively normal,294,32,random_qsf,0.04884173919
+180,dx,Cognitively normal,294,32,selected_qsf,0.04517909251
+180,dx,Other recorded,29,8,random_heat_norm18,0.11703472
+180,dx,Other recorded,29,8,random_heat_raw18,0.1118041975
+180,dx,Other recorded,29,8,random_qsf,0.09369475738
+180,dx,Other recorded,29,8,selected_qsf,0.08623329562
+180,dx,Other recorded,29,16,random_heat_norm18,0.09019761637
+180,dx,Other recorded,29,16,random_heat_raw18,0.088670201
+180,dx,Other recorded,29,16,random_qsf,0.06794744562
+180,dx,Other recorded,29,16,selected_qsf,0.06312024718
+180,dx,Other recorded,29,32,random_heat_norm18,0.07618988109
+180,dx,Other recorded,29,32,random_heat_raw18,0.07396432502
+180,dx,Other recorded,29,32,random_qsf,0.05218360514
+180,dx,Other recorded,29,32,selected_qsf,0.04843307788
+180,dx,Unmatched,58,8,random_heat_norm18,0.1141398
+180,dx,Unmatched,58,8,random_heat_raw18,0.1082612066
+180,dx,Unmatched,58,8,random_qsf,0.09038599837
+180,dx,Unmatched,58,8,selected_qsf,0.08170911802
+180,dx,Unmatched,58,16,random_heat_norm18,0.08730136678
+180,dx,Unmatched,58,16,random_heat_raw18,0.08439042752
+180,dx,Unmatched,58,16,random_qsf,0.06489411036
+180,dx,Unmatched,58,16,selected_qsf,0.06043039642
+180,dx,Unmatched,58,32,random_heat_norm18,0.07202570359
+180,dx,Unmatched,58,32,random_heat_raw18,0.06988065396
+180,dx,Unmatched,58,32,random_qsf,0.04885304035
+180,dx,Unmatched,58,32,selected_qsf,0.04584386794
+180,dx,uncertain dementia,30,8,random_heat_norm18,0.1142020871
+180,dx,uncertain dementia,30,8,random_heat_raw18,0.1078488743
+180,dx,uncertain dementia,30,8,random_qsf,0.09064528606
+180,dx,uncertain dementia,30,8,selected_qsf,0.08111628314
+180,dx,uncertain dementia,30,16,random_heat_norm18,0.08717847973
+180,dx,uncertain dementia,30,16,random_heat_raw18,0.08400002442
+180,dx,uncertain dementia,30,16,random_qsf,0.0654401205
+180,dx,uncertain dementia,30,16,selected_qsf,0.06028148306
+180,dx,uncertain dementia,30,32,random_heat_norm18,0.07146585157
+180,dx,uncertain dementia,30,32,random_heat_raw18,0.06970587047
+180,dx,uncertain dementia,30,32,random_qsf,0.04971022042
+180,dx,uncertain dementia,30,32,selected_qsf,0.04679071628
+90,cdr,0,194,8,random_heat_norm18,0.1124562684
+90,cdr,0,194,8,random_heat_raw18,0.1066659404
+90,cdr,0,194,8,random_qsf,0.08890219031
+90,cdr,0,194,8,selected_qsf,0.0801979691
+90,cdr,0,194,16,random_heat_norm18,0.08682654871
+90,cdr,0,194,16,random_heat_raw18,0.0836105136
+90,cdr,0,194,16,random_qsf,0.06432016478
+90,cdr,0,194,16,selected_qsf,0.05944105845
+90,cdr,0,194,32,random_heat_norm18,0.07199453428
+90,cdr,0,194,32,random_heat_raw18,0.06953252646
+90,cdr,0,194,32,random_qsf,0.04855847189
+90,cdr,0,194,32,selected_qsf,0.04499251811
+90,cdr,0.5,46,8,random_heat_norm18,0.1138508843
+90,cdr,0.5,46,8,random_heat_raw18,0.1086503731
+90,cdr,0.5,46,8,random_qsf,0.09190724473
+90,cdr,0.5,46,8,selected_qsf,0.08263010713
+90,cdr,0.5,46,16,random_heat_norm18,0.08772413346
+90,cdr,0.5,46,16,random_heat_raw18,0.08551034308
+90,cdr,0.5,46,16,random_qsf,0.0663052112
+90,cdr,0.5,46,16,selected_qsf,0.0604829798
+90,cdr,0.5,46,32,random_heat_norm18,0.07264567639
+90,cdr,0.5,46,32,random_heat_raw18,0.07095956527
+90,cdr,0.5,46,32,random_qsf,0.05018992112
+90,cdr,0.5,46,32,selected_qsf,0.04679119162
+90,cdr,>=1,14,8,random_heat_norm18,0.1187038666
+90,cdr,>=1,14,8,random_heat_raw18,0.1115912488
+90,cdr,>=1,14,8,random_qsf,0.09451105275
+90,cdr,>=1,14,8,selected_qsf,0.08668653811
+90,cdr,>=1,14,16,random_heat_norm18,0.09154458338
+90,cdr,>=1,14,16,random_heat_raw18,0.0878135824
+90,cdr,>=1,14,16,random_qsf,0.07085773095
+90,cdr,>=1,14,16,selected_qsf,0.06455318252
+90,cdr,>=1,14,32,random_heat_norm18,0.07721282287
+90,cdr,>=1,14,32,random_heat_raw18,0.07538893253
+90,cdr,>=1,14,32,random_qsf,0.05434982823
+90,cdr,>=1,14,32,selected_qsf,0.04983815566
+90,cdr,Unmatched,207,8,random_heat_norm18,0.1168284749
+90,cdr,Unmatched,207,8,random_heat_raw18,0.1113125269
+90,cdr,Unmatched,207,8,random_qsf,0.09310554208
+90,cdr,Unmatched,207,8,selected_qsf,0.08385674572
+90,cdr,Unmatched,207,16,random_heat_norm18,0.09019623044
+90,cdr,Unmatched,207,16,random_heat_raw18,0.08669885405
+90,cdr,Unmatched,207,16,random_qsf,0.0670369543
+90,cdr,Unmatched,207,16,selected_qsf,0.06170979624
+90,cdr,Unmatched,207,32,random_heat_norm18,0.07487621054
+90,cdr,Unmatched,207,32,random_heat_raw18,0.07225994637
+90,cdr,Unmatched,207,32,random_qsf,0.05063364645
+90,cdr,Unmatched,207,32,selected_qsf,0.04699371921
+90,dx,AD Dementia,26,8,random_heat_norm18,0.1146229629
+90,dx,AD Dementia,26,8,random_heat_raw18,0.1096133882
+90,dx,AD Dementia,26,8,random_qsf,0.09365824631
+90,dx,AD Dementia,26,8,selected_qsf,0.08353439835
+90,dx,AD Dementia,26,16,random_heat_norm18,0.08845410477
+90,dx,AD Dementia,26,16,random_heat_raw18,0.08558733085
+90,dx,AD Dementia,26,16,random_qsf,0.06813747409
+90,dx,AD Dementia,26,16,selected_qsf,0.06172003888
+90,dx,AD Dementia,26,32,random_heat_norm18,0.07337097066
+90,dx,AD Dementia,26,32,random_heat_raw18,0.07170261353
+90,dx,AD Dementia,26,32,random_qsf,0.05100533856
+90,dx,AD Dementia,26,32,selected_qsf,0.04750494407
+90,dx,Cognitively normal,192,8,random_heat_norm18,0.1124705322
+90,dx,Cognitively normal,192,8,random_heat_raw18,0.1066813642
+90,dx,Cognitively normal,192,8,random_qsf,0.08888731631
+90,dx,Cognitively normal,192,8,selected_qsf,0.0802222317
+90,dx,Cognitively normal,192,16,random_heat_norm18,0.08687275093
+90,dx,Cognitively normal,192,16,random_heat_raw18,0.08364082258
+90,dx,Cognitively normal,192,16,random_qsf,0.06435657037
+90,dx,Cognitively normal,192,16,selected_qsf,0.05943427951
+90,dx,Cognitively normal,192,32,random_heat_norm18,0.07202800453
+90,dx,Cognitively normal,192,32,random_heat_raw18,0.06956264478
+90,dx,Cognitively normal,192,32,random_qsf,0.04859695502
+90,dx,Cognitively normal,192,32,selected_qsf,0.0449986442
+90,dx,Other recorded,19,8,random_heat_norm18,0.1177954815
+90,dx,Other recorded,19,8,random_heat_raw18,0.1122298007
+90,dx,Other recorded,19,8,random_qsf,0.09430000811
+90,dx,Other recorded,19,8,selected_qsf,0.08719727224
+90,dx,Other recorded,19,16,random_heat_norm18,0.09086960103
+90,dx,Other recorded,19,16,random_heat_raw18,0.08962039663
+90,dx,Other recorded,19,16,random_qsf,0.06882891672
+90,dx,Other recorded,19,16,selected_qsf,0.06353090286
+90,dx,Other recorded,19,32,random_heat_norm18,0.07710685577
+90,dx,Other recorded,19,32,random_heat_raw18,0.075338198
+90,dx,Other recorded,19,32,random_qsf,0.05299426363
+90,dx,Other recorded,19,32,selected_qsf,0.0491489334
+90,dx,Unmatched,207,8,random_heat_norm18,0.1168284749
+90,dx,Unmatched,207,8,random_heat_raw18,0.1113125269
+90,dx,Unmatched,207,8,random_qsf,0.09310554208
+90,dx,Unmatched,207,8,selected_qsf,0.08385674572
+90,dx,Unmatched,207,16,random_heat_norm18,0.09019623044
+90,dx,Unmatched,207,16,random_heat_raw18,0.08669885405
+90,dx,Unmatched,207,16,random_qsf,0.0670369543
+90,dx,Unmatched,207,16,selected_qsf,0.06170979624
+90,dx,Unmatched,207,32,random_heat_norm18,0.07487621054
+90,dx,Unmatched,207,32,random_heat_raw18,0.07225994637
+90,dx,Unmatched,207,32,random_qsf,0.05063364645
+90,dx,Unmatched,207,32,selected_qsf,0.04699371921
+90,dx,uncertain dementia,17,8,random_heat_norm18,0.111932795
+90,dx,uncertain dementia,17,8,random_heat_raw18,0.1051912261
+90,dx,uncertain dementia,17,8,random_qsf,0.08851374278
+90,dx,uncertain dementia,17,8,selected_qsf,0.07892302657
+90,dx,uncertain dementia,17,16,random_heat_norm18,0.08561102552
+90,dx,uncertain dementia,17,16,random_heat_raw18,0.08212997063
+90,dx,uncertain dementia,17,16,random_qsf,0.06378674476
+90,dx,uncertain dementia,17,16,selected_qsf,0.05849041964
+90,dx,uncertain dementia,17,32,random_heat_norm18,0.06985693637
+90,dx,uncertain dementia,17,32,random_heat_raw18,0.06806904001
+90,dx,uncertain dementia,17,32,random_qsf,0.04860778456
+90,dx,uncertain dementia,17,32,selected_qsf,0.04529291414

@@ -1,0 +1,5 @@
+window,cohort,eligible,matched,unmatched,exact_day,earlier,later,ties,median_abs_days,p90_abs_days,matched_missing_diagnosis,matched_missing_cdr,recorded_label_without_code
+180,all,695,617,78,6,531,80,0,74,147,0,0,16
+180,held-out,461,403,58,4,352,47,0,72,141.8,0,0,12
+90,all,695,371,324,6,332,33,0,52,79,0,0,12
+90,held-out,461,254,207,4,228,22,0,51,79,0,0,9

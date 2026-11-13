@@ -12,7 +12,11 @@ not quantum-computing or biological quantum-process claims.
 
 ## Current Analysis
 
-Version 1.1.0 retains the primary consolidation and adds the fixed channel,
+Version 1.2.0 adds local centroid spacing, selected bounds, a matched HCP-129
+parcellation analysis, and OASIS clinical visit summaries. Aggregate results
+are in `results/anatomy/`; [analysis instructions](docs/ANATOMY.md) cover
+inputs, commands, and validation scope. The original version 1.1.0 retains
+the primary consolidation and the fixed channel,
 shortest-path, and unseen-region controls. The analysis uses 1062 HCP-derived
 83-node connectomes and 695 OASIS-3-derived 124-node connectomes, evaluated
 separately with five overlapping participant holdouts, three protected target

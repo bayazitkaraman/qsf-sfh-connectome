@@ -1,0 +1,10 @@
+{
+  "clinical_sha256": "e328abc3255071e4e1efea0d3e4ca6763961d5d497e4614733882670ac6881b2",
+  "outputs_sha256": {
+    "coverage": "bdd8754408e48a2aa20466ac17d269063baadc10328a9850b4d80abb62d0040a",
+    "groups": "f25dfa895ed29df966e4733758410987a20951db6186b400c76b078564d5a4a3",
+    "errors": "47cd4aed1a387152e6d12336cf97a5a0c613e309719dbec9c1468b92a0ee2228",
+    "contrasts_32": "20c513f6acd9fd7425b8ca56fde7770fa3750be0fe6551e64659c075bcdd1e6f"
+  },
+  "source": "Merged longitudinal OASIS-3 visit table. The digest identifies the analyzed file, not an independently verified official export."
+}

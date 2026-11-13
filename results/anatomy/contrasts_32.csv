@@ -1,0 +1,25 @@
+window,stratification,group,comparison,held_out,estimate,lo95,hi95
+180,cdr,0,"QSF minus raw heat, within participants",296,-0.02131197374,-0.02196014838,-0.02073920791
+180,cdr,0.5,"QSF minus raw heat, within participants",82,-0.02106790755,-0.02192645036,-0.02030210759
+180,cdr,0.5,"QSF group minus reference, between participants",82,0.002341849883,-0.0002519307376,0.00500807113
+180,cdr,>=1,"QSF minus raw heat, within participants",25,-0.02160190106,-0.02358629714,-0.01972138086
+180,cdr,>=1,"QSF group minus reference, between participants",25,0.01092977731,0.003077081946,0.02180409306
+180,dx,AD Dementia,"QSF minus raw heat, within participants",50,-0.02159319442,-0.02271707978,-0.02058152734
+180,dx,AD Dementia,"QSF group minus reference, between participants",50,0.006629530912,0.002234457788,0.01228908208
+180,dx,Cognitively normal,"QSF minus raw heat, within participants",294,-0.02130880977,-0.02195579981,-0.02072965368
+180,dx,Other recorded,"QSF minus raw heat, within participants",29,-0.02178071988,-0.02368956866,-0.0200435887
+180,dx,Other recorded,"QSF group minus reference, between participants",29,0.003341865956,-0.000783286548,0.007776243695
+180,dx,uncertain dementia,"QSF minus raw heat, within participants",30,-0.01999565006,-0.02096856616,-0.01903075229
+180,dx,uncertain dementia,"QSF group minus reference, between participants",30,0.0008684812282,-0.00324247462,0.005484961737
+90,cdr,0,"QSF minus raw heat, within participants",194,-0.02097405457,-0.02161768784,-0.02039612239
+90,cdr,0.5,"QSF minus raw heat, within participants",46,-0.02076964415,-0.02204611208,-0.01971506766
+90,cdr,0.5,"QSF group minus reference, between participants",46,0.001631449228,-0.001731767226,0.005443612409
+90,cdr,>=1,"QSF minus raw heat, within participants",14,-0.0210391043,-0.02263481293,-0.01944569963
+90,cdr,>=1,"QSF group minus reference, between participants",14,0.005791356338,0.0003316749731,0.01199828993
+90,dx,AD Dementia,"QSF minus raw heat, within participants",26,-0.02069727497,-0.02180876416,-0.01962326414
+90,dx,AD Dementia,"QSF group minus reference, between participants",26,0.002408383535,-0.0006580282385,0.005782233835
+90,dx,Cognitively normal,"QSF minus raw heat, within participants",192,-0.02096568975,-0.0216018868,-0.02036904334
+90,dx,Other recorded,"QSF minus raw heat, within participants",19,-0.02234393437,-0.02473290615,-0.0204145113
+90,dx,Other recorded,"QSF group minus reference, between participants",19,0.00439730861,-0.0009971053304,0.01070252811
+90,dx,uncertain dementia,"QSF minus raw heat, within participants",17,-0.01946125545,-0.02092332764,-0.01816253156
+90,dx,uncertain dementia,"QSF group minus reference, between participants",17,1.08295317e-05,-0.005717896854,0.007145306052
