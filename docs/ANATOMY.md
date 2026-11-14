@@ -42,28 +42,55 @@ the 135 fits are not a quick installation test.
 
 ## Clinical visit matching in OASIS
 
-Supply the hash-matched OASIS GraphMLs using their original
-participant/session filenames via `QSF_OASIS_DATA`. Run the practical
-scorer first. Supply a locally authorized longitudinal visit CSV with columns
-`subject_id,session_id,days_to_visit,CDRTOT,dx1,dx1_code`.
-Session codes are d-prefixed signed study days. Participant and day must
-identify a unique visit; formats are validated, not guessed. The study
-used a merged longitudinal table, not an imaging-filtered MRI/PET merge.
+Start with the [OASIS-3](https://sites.wustl.edu/oasisbrains/home/access/) Form B4
+visit export obtained under your own access approval. Run the practical scorer
+first and set `QSF_OASIS_DATA` to the hash-matched OASIS GraphMLs with their
+original filenames. The six fields below are sufficient for Table S17.
 
-```sh
-python scripts/clinical_visits.py /private/path/visits.csv
-python scripts/check_clinical_replay.py /private/path/identical-study-input.csv
+| Official B4 column | Input to `clinical_visits.py` | Meaning |
+| --- | --- | --- |
+| `OASISID` | `subject_id` | Keep the participant key unchanged. |
+| `OASIS_session_label` | `session_id` | Keep the final `d<signed day>` token, including any minus sign and leading zeros. |
+| `days_to_visit` | `days_to_visit` | Study day of the **visit**, not the number of days between scan and visit. |
+| `CDRTOT` | `CDRTOT` | Global Clinical Dementia Rating in this export; do not substitute the sum of boxes (`CDRSUM`). |
+| `dx1` | `dx1` | Recorded primary diagnosis text. |
+| `dx1_code` | `dx1_code` | Recorded primary diagnosis code; leave missing codes empty. |
+
+Run this Python snippet locally. Replace the two paths with locations in a
+private, access-controlled directory **outside the Git checkout**. Use a new
+output filename. Keep all visits, including rows with a missing field.
+
+```python
+from pathlib import Path
+import pandas as pd
+
+source = Path("/private/path/Form B4 Global Staging CDR Standard and Supplemental.csv")
+target = Path("/private/path/b4_visits.csv")
+fields = ["OASISID", "OASIS_session_label", "days_to_visit", "CDRTOT", "dx1", "dx1_code"]
+visits = pd.read_csv(source, usecols=fields, dtype=str, keep_default_na=False)
+keys = visits["OASIS_session_label"].str.extract(r"^(OAS3\d+)_UDSb4_(d-?\d+)$")
+if keys.isna().any().any() or not keys[0].eq(visits["OASISID"]).all():
+    raise ValueError("Unexpected participant or session label in the B4 export.")
+days = pd.to_numeric(visits["days_to_visit"], errors="raise")
+if not pd.to_numeric(keys[1].str[1:]).eq(days).all():
+    raise ValueError("Session day does not agree with days_to_visit.")
+if pd.DataFrame({"id": keys[0], "day": days}).duplicated().any():
+    raise ValueError("Duplicate participant and visit day; inspect the export.")
+visits = visits.rename(columns={"OASISID": "subject_id"}).assign(session_id=keys[1])
+columns = ["subject_id", "session_id", "days_to_visit", "CDRTOT", "dx1", "dx1_code"]
+visits.to_csv(target, columns=columns, index=False, mode="x")
 ```
 
-The first command matches the nearest clinical visit within each window
-(180 and 90 days, inclusive). Read [coverage](../results/anatomy/coverage.csv)
-for the matched and unmatched counts, [groups](../results/anatomy/groups.csv)
-for coordinate availability, and [contrasts](../results/anatomy/contrasts_32.csv)
-for the error differences at 32 sources. Availability uses all matched
-participants in each group; prediction error uses only those with held-out
-predictions. Visits and diagnoses are not inputs to the decoder.
-The second checks the study input fingerprint, aggregate replay and sensitivity
-to missing numeric diagnosis codes; it is not authentication of an official
-export. A different export must be reconciled at the visit level, not declared
-equivalent because totals happen to match. Raw visit records, participant
-identities, graphs, and predictions are not distributed.
+```sh
+python scripts/clinical_visits.py /private/path/b4_visits.csv --out /private/path/b4_results
+```
+
+Use a fresh results directory for a new input file. This command selects the
+nearest eligible visit within 180 and 90 days (inclusive). Compare the generated
+[coverage](../results/anatomy/coverage.csv), [groups](../results/anatomy/groups.csv),
+[errors](../results/anatomy/errors.csv), and [contrasts](../results/anatomy/contrasts_32.csv)
+with the published aggregates. Coordinate availability uses the full group;
+prediction errors use only participants with held-out predictions. Clinical
+variables do not enter model fitting. Keep the original and prepared visit CSVs
+private. The byte-level replay check in the repository is specific to the
+original study input, not the prepared B4 CSV.

@@ -60,4 +60,8 @@ The first script verifies the distributed files; the second writes ten figure pa
 
 The [study snapshot (v1.2.0)](https://github.com/bayazitkaraman/qsf-sfh-connectome/tree/v1.2.0) identifies the exact code and aggregate results cited in *Anatomical Information in Source-Conditioned Connectome Responses: Bounded Coordinate Decoding and Reference Placement*. Raw graphs, clinical visit records, and participant-level predictions are not distributed.
 
+## OASIS-3 acknowledgment
+
+Data were provided in part by OASIS-3: Longitudinal Multimodal Neuroimaging (principal investigators: T. Benzinger, D. Marcus, and J. Morris; NIH P30 AG066444, P50 AG00561, P30 NS09857781, P01 AG026276, P01 AG003991, R01 AG043434, UL1 TR000448, R01 EB009352, and AW00006993). Avid Radiopharmaceuticals, a wholly owned subsidiary of Eli Lilly, provided the AV-45 and AV-1451 doses for OASIS-3. This analysis used structural connectomes and clinical assessments, not PET data. See the [OASIS-3 dataset paper](https://doi.org/10.1101/2019.12.13.19014902) and [data-use terms](https://sites.wustl.edu/oasisbrains/home/access/).
+
 **Author:** Bayazit Karaman, Department of Computer Science, Florida Polytechnic University. **Contact:** bkaraman@floridapoly.edu. The [MIT license](LICENSE) covers the software; the source datasets retain their own access and use conditions.
