@@ -92,5 +92,20 @@ nearest eligible visit within 180 and 90 days (inclusive). Compare the generated
 with the published aggregates. Coordinate availability uses the full group;
 prediction errors use only participants with held-out predictions. Clinical
 variables do not enter model fitting. Keep the original and prepared visit CSVs
-private. The byte-level replay check in the repository is specific to the
-original study input, not the prepared B4 CSV.
+private. The [source comparison](../results/anatomy/b4_reconciliation.json)
+names the two inputs and reports aggregate discrepancies. All 8,625 usable visits
+agreed on participant and visit day, global CDR, primary diagnosis, and its
+code (including missingness). Across the 695 study participants, both files
+selected the same visits and clinical groups at 180 and 90 days. This agreement
+does not require the source files to have identical bytes.
+
+With the local primary inputs prepared, the following compares the official
+B4 export with the study's merged input and prints only aggregate counts.
+The replay command also requires the practical scorer outputs and the exact
+merged input identified by its fingerprint. It checks the four published
+clinical tables and writes `clinical_replay.json` to the specified directory.
+
+```sh
+python scripts/compare_b4_visits.py /private/path/form_b4.csv /private/path/merged_study_input.csv
+python scripts/check_clinical_replay.py /private/path/merged_study_input.csv --out /private/path/replay_results
+```

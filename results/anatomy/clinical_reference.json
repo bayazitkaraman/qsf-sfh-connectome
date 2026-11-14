@@ -6,5 +6,5 @@
     "errors": "47cd4aed1a387152e6d12336cf97a5a0c613e309719dbec9c1468b92a0ee2228",
     "contrasts_32": "20c513f6acd9fd7425b8ca56fde7770fa3750be0fe6551e64659c075bcdd1e6f"
   },
-  "source": "Merged longitudinal OASIS-3 visit table. The digest identifies the analyzed file, not an independently verified official export."
+  "source": "Merged longitudinal OASIS-3 visit table. The digest identifies the exact analysis input. Comparison with the OASIS-3 Form B4 export is recorded in b4_reconciliation.json."
 }

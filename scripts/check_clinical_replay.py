@@ -45,14 +45,15 @@ def check(source, output):
         results.append(dict(window=window, matched=len(usable),
                             held_out=int(usable.held.sum()), ad_held=len(ad),
                             normal_held=len(ref), **contrast))
-    output = dict(source_sha256=analysis.sha(source),
+    report = dict(source_sha256=analysis.sha(source),
                   endpoint_reconstruction_max_abs=delta,
                   replayed_summaries=list(manifest["outputs_sha256"]),
                   diagnosis_code_present_sensitivity=results)
     output.mkdir(parents=True, exist_ok=True)
     path = output / "clinical_replay.json"
-    path.write_text(json.dumps(output, indent=2, allow_nan=False) + "\n")
-    print(json.dumps(output, indent=2))
+    payload = json.dumps(report, indent=2, allow_nan=False)
+    path.write_text(payload + "\n", encoding="utf-8")
+    print(payload)
 
 
 if __name__ == "__main__":

@@ -58,7 +58,7 @@ The first script verifies the distributed files; the second writes ten figure pa
 2. **[Run the primary benchmark and representation controls](docs/REPRODUCIBILITY.md).** This guide covers preparation, fitting, scoring, resource requirements, and verification.
 3. **[Run the anatomical and clinical analyses](docs/ANATOMY.md).** Choose a workflow for anatomical spacing, decoder bounds, the 129-region HCP parcellation, or clinical visit matching.
 
-The [study snapshot (v1.2.0)](https://github.com/bayazitkaraman/qsf-sfh-connectome/tree/v1.2.0) identifies the exact code and aggregate results cited in *Anatomical Information in Source-Conditioned Connectome Responses: Bounded Coordinate Decoding and Reference Placement*. Raw graphs, clinical visit records, and participant-level predictions are not distributed.
+The [study snapshot (v1.2.1)](https://github.com/bayazitkaraman/qsf-sfh-connectome/tree/v1.2.1) identifies the exact code and aggregate results cited in *Anatomical Information in Source-Conditioned Connectome Responses: Bounded Coordinate Decoding and Reference Placement*. Raw graphs, clinical visit records, and participant-level predictions are not distributed.
 
 ## OASIS-3 acknowledgment
 

@@ -1,0 +1,48 @@
+{
+  "inputs": [
+    "OASIS-3 Form B4 visit export",
+    "Merged longitudinal analysis table"
+  ],
+  "b4_rows": 8626,
+  "prepared_rows": 15238,
+  "b4_usable_visits": 8625,
+  "prepared_usable_visits": 8625,
+  "usable_visit_differences": {
+    "visit_keys": 0,
+    "global_cdr": 0,
+    "primary_diagnosis": 0,
+    "primary_diagnosis_code": 0
+  },
+  "windows": [
+    {
+      "days": 180,
+      "participants": 695,
+      "b4_matched": 617,
+      "prepared_matched": 617,
+      "b4_held_out_matched": 403,
+      "prepared_held_out_matched": 403,
+      "differences": {
+        "matched_status": 0,
+        "selected_visit_day": 0,
+        "cdr_group": 0,
+        "diagnosis_group": 0,
+        "diagnosis_code_missing": 0
+      }
+    },
+    {
+      "days": 90,
+      "participants": 695,
+      "b4_matched": 371,
+      "prepared_matched": 371,
+      "b4_held_out_matched": 254,
+      "prepared_held_out_matched": 254,
+      "differences": {
+        "matched_status": 0,
+        "selected_visit_day": 0,
+        "cdr_group": 0,
+        "diagnosis_group": 0,
+        "diagnosis_code_missing": 0
+      }
+    }
+  ]
+}

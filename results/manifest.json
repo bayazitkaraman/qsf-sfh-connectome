@@ -21,7 +21,8 @@
   "verification_sha256": {
     "controls_verification.json": "d9c3aed2ff805b8ffcabd8cffba6b7e0a03f04665f82ce806207b5ee1d52338f",
     "release_validation.json": "a71d47a3c10655018412f48a76aa5e891989cf4ca564c6fe23f11c37dcc87d69",
-    "anatomy/clinical_reference.json": "d6c0727e84ea8db147d6c658580415114e4e1097c1e942aa07984f0e09330a93",
-    "anatomy/clinical_release_check.json": "322f68326abada0d9b44d681cf40063ce7952e1b95c805e88b56bb47ee38d958"
+    "anatomy/clinical_reference.json": "bc268612fe6528c7b3ce43249ff221abf0c1abb3099e1ea5af973817375bdb86",
+    "anatomy/clinical_release_check.json": "322f68326abada0d9b44d681cf40063ce7952e1b95c805e88b56bb47ee38d958",
+    "anatomy/b4_reconciliation.json": "7532c94a5fc5caa300a08483258805f9a69603426d95d29b1e5850be851e23a9"
   }
 }
